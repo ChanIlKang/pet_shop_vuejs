@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-5 offset-md-0">
             <figure>
-              <img alt="productImage" class="product" :src="require(`./${product.image}`)"/>
+              <img alt="productImage" class="product" :src="require(`../${product.image}`)"/>
             </figure>
           </div>
           <div class="col-md-5 offset-md-0 description">
@@ -56,26 +56,6 @@ export default {
       cart: []
     }
   },
-  methods: {
-    addToCart(aProduct) {
-      this.cart.push(aProduct.id);
-    },
-    checkRating(n, myProduct) {
-      return (myProduct.rating - n) >= 0
-    },
-    canAddToCart(aProduct) {
-      return aProduct.availableInventory > this.cartCount(aProduct.id);
-    },
-    cartCount(id) {
-      let count = 0;
-      for (let i = 0; i < this.cart.length; i++) {
-        if (this.cart[i] === id) {
-          count++;
-        }
-      }
-      return count;
-    }
-  },
   computed: {
     cartItemCount() {
       return this.cart.length || ''
@@ -103,7 +83,27 @@ export default {
       }
     }
   },
-  created:function () {
+  methods: {
+    addToCart(aProduct) {
+      this.cart.push(aProduct.id);
+    },
+    checkRating(n, myProduct) {
+      return (myProduct.rating - n) >= 0
+    },
+    canAddToCart(aProduct) {
+      return aProduct.availableInventory > this.cartCount(aProduct.id);
+    },
+    cartCount(id) {
+      let count = 0;
+      for (let i = 0; i < this.cart.length; i++) {
+        if (this.cart[i] === id) {
+          count++;
+        }
+      }
+      return count;
+    }
+  },
+  created() {
     axios.get('http://localhost:3000/products')
         .then((response) => {
           this.products = response.data.products;
@@ -116,5 +116,10 @@ export default {
 </script>
 
 <style scoped>
-
+.product {
+  margin-top: 30px;
+  margin-left: 20px;
+  max-height:300px;
+  max-width:100%;
+}
 </style>
