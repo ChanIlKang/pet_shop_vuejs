@@ -49,7 +49,7 @@ a {
 }
 
 .router-link-exact-active {
-  /*color: blue;*/
-  color: black;
+  color: blue;
+  /*color: black;*/
 }
 </style>

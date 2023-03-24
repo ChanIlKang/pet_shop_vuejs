@@ -7,36 +7,44 @@ import Product from '@/components/Product'
 import EditProduct from '@/components/EditProduct'
 import App from "@/App";
 
-const router = createRouter({
+const index = createRouter({
     history: createWebHistory(),
     routes: [
         {
             path: "/",
             name: "Home",
             component: Main,
+            props:true,
         },
         {
             path: "/form",
             name: "Form",
             component: Form,
+            props:true,
         },
         {
             path: '/product/:id',
             name: 'Id',
             component: Product,
+            props:true,
             children: [
                 {
                     path: 'edit',
                     name: 'Edit',
                     component: EditProduct,
+                    props: true
                 }
             ]
         },
+        // {
+        //     path: '*',
+        //     redirect:"/"
+        // }
     ],
 });
 
 const app = createApp(App);
 
-app.use(router)
+app.use(index)
 
-export default router;
+export default index;
