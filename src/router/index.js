@@ -35,11 +35,7 @@ const index = createRouter({
                     props: true
                 }
             ]
-        },
-        // {
-        //     path: '*',
-        //     redirect:"/"
-        // }
+        }
     ],
 });
 

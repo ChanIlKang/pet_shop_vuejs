@@ -55,20 +55,20 @@
 
 <script>
 import Header from "./Header";
+import {mapGetters} from 'vuex'
 
 export default {
   name: "Main-",
   components: {Header},
   data() {
     return {
-      // products: [],
       cart: []
     }
   },
   computed: {
-    products() {
-      return this.$store.getters.products;
-    },
+    ...mapGetters([
+       'products'
+    ]),
     cartItemCount() {
       return this.cart.length || ''
     },
@@ -117,13 +117,6 @@ export default {
   },
   created() {
     this.$store.dispatch('initStore');
-    // axios.get('http://localhost:3000/products')
-    //     .then((response) => {
-    //       this.products = response.data.products;
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
   }
 }
 </script>
