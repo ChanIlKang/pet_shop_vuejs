@@ -3,8 +3,6 @@
 # Project Title
 ---
 #### Vue.js Pet Shop
-# Deployments URL
----
 
 # Skills
 ---
